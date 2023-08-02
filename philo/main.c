@@ -10,12 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hf/philo.h"
+#include "philo.h"
 
 int	main(int ac, char **av)
 {
 	t_table	*table;
 
 	table = NULL;
+	if (ac < 5 || ac > 6)
+		return (EXIT_FAILURE);
+	if (ft_parse(ac, av))
+		return (EXIT_FAILURE);
 	table = set_table(ac, av, 1);
+	if (!table)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
