@@ -12,7 +12,7 @@ CC 			=	cc
 FLAGS 		=	-Wall -Werror -Wextra -g
 FSANITIZE 	=	-fsanitize=address 
 #
-bonus:	$(NAME)
+all:	$(NAME)
 			@echo > /dev/null
 #
 $(NAME):	$(OBJSB)
@@ -33,4 +33,4 @@ fclean:		clean
 #
 re:			fclean all
 #
-.PHONY :	all clean fclean re bonus
+.PHONY :	all clean fclean re
