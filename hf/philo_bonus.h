@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 20:27:37 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/07/28 20:27:38 by tgalyaut         ###   ########.fr       */
+/*                                                    *._           _.*   @   */
+/*   philo_bonus.h                                      |\  \\_//  /|     #   */
+/*                                                      \/         \/     $   */
+/*   By: olnytim <yearagotomorrow@gmail.com>           _|_    V  V  |_    %   */
+/*                                                  *=.    =  _*  =   .=* ^   */
+/*   Created: 2023/08/02 23:20:10 by olnytim           \= ___________=/   &   */
+/*   Updated: 2023/08/02 23:20:12 by olnytim                /     \       *   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-#define PHILO_H
+#ifndef PHILO_BONUS_H
+#define PHILO_BONUS_H
 
 # include <pthread.h>
 # include <limits.h>
@@ -20,17 +20,6 @@
 # include "../libft/libft.h"
 # include <sys/time.h>
 # include <stdbool.h>
-
-typedef struct	s_table
-{
-	time_t			start_time;
-	time_t			time_to_die;
-	time_t			time_to_eat;
-	time_t			time_to_sleep;
-	int				must_eat;
-	unsigned int	philos;
-}				t_table;
-
 
 typedef struct	s_philo
 {
