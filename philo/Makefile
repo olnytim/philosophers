@@ -4,7 +4,7 @@ PREF_OBJ 	=	obj
 #
 HEADER 		=	-I.
 #
-SRCS 		=	main.c parse.c init.c
+SRCS 		=	main.c parse.c init.c the_end.c time.c
 OBJS 		=	$(patsubst %.c, $(PREF_OBJ)/%.o, $(SRCS))
 DEPS 		=	$(OBJS:.o=.d)
 #

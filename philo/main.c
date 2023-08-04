@@ -12,6 +12,12 @@
 
 #include "philo.h"
 
+// static int	ft_go(t_table *table)
+// {
+// 	unsigned int	i;
+
+// }
+
 int	main(int ac, char **av)
 {
 	t_table	*table;

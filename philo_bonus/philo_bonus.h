@@ -37,19 +37,8 @@ typedef struct s_philo
 	pthread_t		thread;
 	unsigned int	id;
 	unsigned int	times_ate;
-	unsigned int	fork[2];
 	pthread_mutex_t	meal_time_lock;
 	time_t			last_meal;
 }				t_philo;
-
-typedef enum e_condition
-{
-	DIED = 0,
-	EATING = 1,
-	SLEEPING = 2,
-	THINKING = 3,
-	FORK_1 = 4,
-	FORK_2 = 5
-}				t_condition;
 
 #endif
