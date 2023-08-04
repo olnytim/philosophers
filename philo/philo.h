@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:27:37 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/07/28 20:27:38 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:34:20 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ typedef struct s_philo
 	pthread_t		thread;
 	unsigned int	id;
 	unsigned int	times_ate;
-	unsigned int	fork[2];
-	pthread_mutex_t	meal_time_lock;
+	pthread_mutex_t	*fork1;
+	pthread_mutex_t	*fork2;
+	pthread_mutex_t	*meal_time_lock;
 	time_t			last_meal;
-}				t_philo;
+}	t_philo;
 
 typedef struct s_table
 {
@@ -38,8 +39,9 @@ typedef struct s_table
 	time_t			time_to_sleep;
 	int				must_eat;
 	unsigned int	philos;
-	t_philo			**thread;
-}				t_table;
+	pthread_mutex_t	*forks;
+	t_philo			*thread;
+}	t_table;
 
 typedef enum e_condition
 {
@@ -49,7 +51,7 @@ typedef enum e_condition
 	THINKING = 3,
 	FORK_1 = 4,
 	FORK_2 = 5
-}				t_condition;
+}	t_condition;
 
 int	ft_parse(int ac, char **av);
 int	ft_atoi(char *str);
