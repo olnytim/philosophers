@@ -16,6 +16,18 @@
 // {
 // 	unsigned int	i;
 
+// 	i = 0;
+// 	while (i < table->philos)
+// 	{
+// 		if (pthread_create(&table->thread[i].thread, NULL,
+// 			&ft_philo, &table->thread[i]) != 0)
+// 			return (error_init(ERROR_THREAD, NULL, table));
+// 		++i;
+// 	}
+// 	// if (table->philos > 1)
+// 	// {
+// 	// 	if (pthread_create())
+// 	// }
 // }
 
 int	main(int ac, char **av)
@@ -24,7 +36,7 @@ int	main(int ac, char **av)
 
 	table = NULL;
 	if (ac < 5 || ac > 6)
-		return (EXIT_FAILURE);
+		return (ft_out(ERROR_USAGE, NULL, EXIT_FAILURE));
 	if (ft_parse(ac, av))
 		return (EXIT_FAILURE);
 	table = set_table(ac, av, 1);

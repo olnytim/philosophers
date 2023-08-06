@@ -15,9 +15,9 @@
 int	ft_out(char	*str, char *reas, int ret)
 {
 	if (!reas)
-		printf(str, "philo");
+		printf(str, "philo:");
 	else
-		printf(str, "philo", reas);
+		printf(str, "philo:", reas);
 	return (ret);
 }
 

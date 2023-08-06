@@ -49,12 +49,12 @@ int	ft_parse(int ac, char **av)
 	while (i < ac)
 	{
 		if (ft_isnum(av[i]))
-			return (1);
+			return (ft_out(ERROR_INPUT, av[i], EXIT_FAILURE));
 		num = ft_atoi(av[i]);
 		if (i == 1 && num <= 0)
-			return (1);
+			return (ft_out(ERROR_PINPUT, 0, EXIT_FAILURE));
 		if (i != 1 && num == -1)
-			return (1);
+			return (ft_out(ERROR_INPUT, av[i], EXIT_FAILURE));
 		++i;
 	}
 	return (0);
