@@ -40,6 +40,21 @@ void	*free_table(t_table *table)
 	return (NULL);
 }
 
+void	mutexes_end(t_table *table)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < table->philos)
+	{
+		pthread_mutex_destroy(&table->forks[i]);
+		pthread_mutex_destroy(&table->thread[i].meal_lock);
+		++i;
+	}
+	pthread_mutex_destroy(&table->output_lock);
+	pthread_mutex_destroy(&table->end_lock);
+}
+
 int	error_init(t_table *table, char *str, char *reas)
 {
 	if (table != NULL)

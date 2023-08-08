@@ -36,23 +36,27 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	unsigned int	id;
-	unsigned int	times_ate;
 	pthread_mutex_t	*fork1;
 	pthread_mutex_t	*fork2;
+	pthread_mutex_t	meal_lock;
 	time_t			last_meal;
+	unsigned int	times_ate;
 	struct s_table	*table;
 }	t_philo;
 
 typedef struct s_table
 {
-	time_t			start_time;
 	unsigned int	philos;
+	pthread_t		wasted;
 	time_t			time_to_die;
 	time_t			time_to_eat;
 	time_t			time_to_sleep;
-	int				must_eat;
+	unsigned int	must_eat;
+	time_t			start_time;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	mutex_init;
+	pthread_mutex_t	output_lock;
+	pthread_mutex_t	end_lock;
+	int				bool_flag;
 	t_philo			*thread;
 }	t_table;
 
@@ -65,6 +69,7 @@ int		ft_out(char	*str, char *reas, int ret);
 int		error_init(t_table *table, char *str, char *reas);
 void	*error_init2(t_table *table, char *str, char *reas);
 void	*free_table(t_table *table);
+void	mutexes_end(t_table *table);
 
 t_table	*set_table(int ac, char **av, int i);
 
@@ -75,5 +80,12 @@ time_t	ft_currect_time(void);
 
 /* thread init */
 void	*ft_philo(void *info);
+
+/* you are dead */
+int		ft_the_end(t_table *table);
+void	*ft_philo_is_dead(void *info);
+
+/* print status */
+void	ft_print_status(t_philo *philo, int is_dead, int cases);
 
 #endif

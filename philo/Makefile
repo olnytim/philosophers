@@ -1,11 +1,12 @@
 NAME 		=	philo
 #
+PREF_SRC 	=	src
 PREF_OBJ 	=	obj
 #
 HEADER 		=	-I.
 #
-SRCS 		=	main.c parse.c init.c the_end.c time.c
-OBJS 		=	$(patsubst %.c, $(PREF_OBJ)/%.o, $(SRCS))
+SRCS 		=	$(addprefix $(PREF_SRC)/, main.c parse.c init.c the_end.c time.c output.c philo.c you_are_dead.c)
+OBJS 		=	$(patsubst $(PREF_SRC)/%.c, $(PREF_OBJ)/%.o, $(SRCS))
 DEPS 		=	$(OBJS:.o=.d)
 #
 CC 			=	cc
@@ -19,7 +20,7 @@ $(NAME):	$(OBJS)
 			@$(CC) $(FLAGS) $(OBJS) -o $@
 			@echo "Executable file "$(NAME)" created successfully!"
 #
-$(PREF_OBJ)/%.o:	%.c Makefile
+$(PREF_OBJ)/%.o:	$(PREF_SRC)/%.c Makefile
 			@mkdir -p $(PREF_OBJ)
 			@$(CC) $(FLAGS) $(HEADER) -MMD -c $< -o $@
 #

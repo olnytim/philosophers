@@ -12,23 +12,39 @@
 
 #include "philo.h"
 
-// static int	ft_go(t_table *table)
-// {
-// 	unsigned int	i;
+static int	ft_go(t_table *table)
+{
+	unsigned int	i;
 
-// 	i = 0;
-// 	while (i < table->philos)
-// 	{
-// 		if (pthread_create(&table->thread[i].thread, NULL,
-// 			&ft_philo, &table->thread[i]) != 0)
-// 			return (error_init(ERROR_THREAD, NULL, table));
-// 		++i;
-// 	}
-// 	// if (table->philos > 1)
-// 	// {
-// 	// 	if (pthread_create())
-// 	// }
-// }
+	i = 0;
+	while (i < table->philos)
+	{
+		if (pthread_create(&table->thread[i].thread, NULL,
+			&ft_philo, &table->thread[i]) != 0)
+			return (error_init(table, ERROR_THREAD, NULL));
+		++i;
+	}
+	if (table->philos > 1)
+	{
+		if (pthread_create(&table->wasted, NULL,
+			&ft_philo_is_dead, table) != 0)
+			return (error_init(table, ERROR_THREAD, NULL));
+	}
+	return (1);
+}
+
+static void	ft_end(t_table *table)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < table->philos)
+		pthread_join(table->thread[i++].thread, NULL);
+	if (table->philos > 1)
+		pthread_join(table->wasted, NULL);
+	mutexes_end(table);
+	free_table(table);
+}
 
 int	main(int ac, char **av)
 {
@@ -42,5 +58,9 @@ int	main(int ac, char **av)
 	table = set_table(ac, av, 1);
 	if (!table)
 		return (EXIT_FAILURE);
+	// if (!ft_go)
+	// 	return (EXIT_FAILURE);
+	printf("ft_go(): %d\n", ft_go(table));
+	ft_end(table);
 	return (EXIT_SUCCESS);
 }
