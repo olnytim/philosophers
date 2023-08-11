@@ -60,8 +60,8 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	// if (!ft_go)
 	// 	return (EXIT_FAILURE);
-	// ft_go(table);
-	printf("ft_go(): %d\n", ft_go(table));
+	ft_go(table);
+	// printf("ft_go(): %d\n", ft_go(table));
 	// ft_end(table);
 	return (EXIT_SUCCESS);
 }
