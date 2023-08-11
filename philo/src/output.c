@@ -6,11 +6,11 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 19:48:13 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/11 17:20:39 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:47:03 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../hf/philo.h"
 
 void	ft_print_status(t_philo *philo, int is_dead, int cases)
 {

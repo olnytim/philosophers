@@ -6,11 +6,11 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:05:56 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/11 17:20:33 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:49:07 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../hf/philo.h"
 
 static void	ft_print(t_table *table)
 {

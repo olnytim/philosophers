@@ -6,11 +6,11 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:18:59 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/11 17:20:59 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:47:13 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../hf/philo.h"
 
 time_t	ft_currect_time(void)
 {

@@ -6,11 +6,11 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:04:57 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/11 17:20:36 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 18:16:48 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../hf/philo.h"
 
 static int	ft_go(t_table *table)
 {
@@ -58,9 +58,9 @@ int	main(int ac, char **av)
 	table = set_table(ac, av, 1);
 	if (!table)
 		return (EXIT_FAILURE);
-	// if (!ft_go)
-	// 	return (EXIT_FAILURE);
-	printf("ft_go(): %d\n", ft_go(table));
+	if (!&ft_go)
+		return (EXIT_FAILURE);
+	// printf("ft_go(): %d\n", ft_go(table));
 	// ft_end(table);
 	return (EXIT_SUCCESS);
 }

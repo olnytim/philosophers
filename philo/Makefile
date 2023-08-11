@@ -3,7 +3,8 @@ NAME 		=	philo
 PREF_SRC 	=	src
 PREF_OBJ 	=	obj
 #
-HEADER 		=	-I.
+HF_PATH 	=	hf
+HEADER 		=	-I$(HF_PATH)
 #
 SRCS 		=	$(addprefix $(PREF_SRC)/, main.c parse.c init.c the_end.c time.c output.c philo.c you_are_dead.c)
 OBJS 		=	$(patsubst $(PREF_SRC)/%.c, $(PREF_OBJ)/%.o, $(SRCS))
