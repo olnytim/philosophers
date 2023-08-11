@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 18:12:26 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/11 17:58:58 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:51:46 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	ft_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->fork1);
+	pthread_mutex_lock(philo->fork1);
 	ft_print_status(philo, 0, 3);
-	pthread_mutex_lock(&philo->fork2);
+	pthread_mutex_lock(philo->fork2);
 	ft_print_status(philo, 0, 3);
 	ft_print_status(philo, 0, 4);
 	pthread_mutex_lock(&philo->meal_lock);
@@ -29,8 +29,8 @@ static void	ft_eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
-	pthread_mutex_unlock(&philo->fork1);
-	pthread_mutex_unlock(&philo->fork2);
+	pthread_mutex_unlock(philo->fork1);
+	pthread_mutex_unlock(philo->fork2);
 	ft_sleep(philo->table->time_to_sleep);
 }
 
@@ -72,13 +72,13 @@ void	*ft_philo(void *info)
 	if (philo->table->must_eat == 0)
 		return (NULL);
 	pthread_mutex_lock(&philo->meal_lock);
-	philo->last_meal = ft_currect_time();
+	philo->last_meal = ft_currect_time(philo);
 	pthread_mutex_unlock(&philo->meal_lock);
 	if (philo->table->time_to_die == 0)
 		return (NULL);
 	if (philo->table->philos == 1)
 		return (ft_one_philo(philo));
-	else if (philo->id - 1 % 2)
+	else if ((philo->id - 1) % 2)
 		ft_think(philo, 1);
 	while (ft_the_end(philo->table) == 0)
 	{
