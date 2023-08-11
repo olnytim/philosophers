@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:04:57 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/04 16:06:02 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:20:36 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ static int	ft_go(t_table *table)
 	return (1);
 }
 
-static void	ft_end(t_table *table)
-{
-	unsigned int	i;
+// static void	ft_end(t_table *table)
+// {
+// 	unsigned int	i;
 
-	i = 0;
-	while (i < table->philos)
-		pthread_join(table->thread[i++].thread, NULL);
-	if (table->philos > 1)
-		pthread_join(table->wasted, NULL);
-	mutexes_end(table);
-	free_table(table);
-}
+// 	i = 0;
+// 	while (i < table->philos)
+// 		pthread_join(table->thread[i++].thread, NULL);
+// 	if (table->philos > 1)
+// 		pthread_join(table->wasted, NULL);
+// 	mutexes_end(table);
+// 	free_table(table);
+// }
 
 int	main(int ac, char **av)
 {
@@ -61,6 +61,6 @@ int	main(int ac, char **av)
 	// if (!ft_go)
 	// 	return (EXIT_FAILURE);
 	printf("ft_go(): %d\n", ft_go(table));
-	ft_end(table);
+	// ft_end(table);
 	return (EXIT_SUCCESS);
 }
