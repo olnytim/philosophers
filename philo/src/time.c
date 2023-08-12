@@ -6,18 +6,18 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:18:59 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/11 19:58:18 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:57:18 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hf/philo.h"
 
-time_t	ft_currect_time(t_philo *philo)
+time_t	ft_current_time(t_philo *philo)
 {
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000) - philo->last_meal);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000) - philo->table->start_time);
 }
 
 time_t	ft_start_time(void)

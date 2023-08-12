@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 18:12:26 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/11 20:51:46 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:54:45 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	ft_think(t_philo *philo, int mute)
 	time_t	time_to_think;
 
 	pthread_mutex_lock(&philo->meal_lock);
-	time_to_think = (philo->table->time_to_die 
-		- (ft_start_time() - philo->last_meal) 
-		- philo->table->time_to_eat) / 2;
+	time_to_think = (philo->table->time_to_die
+			- (ft_start_time() - philo->last_meal)
+			- philo->table->time_to_eat) / 2;
 	pthread_mutex_unlock(&philo->meal_lock);
 	if (time_to_think < 0)
 		time_to_think = 0;
@@ -69,17 +69,17 @@ void	*ft_philo(void *info)
 	t_philo	*philo;
 
 	philo = (t_philo *)info;
-	printf("must eat: %d\n", philo->table->must_eat);
+	// printf(": %u\n", philo->table->must_eat);
 	if (philo->table->must_eat == 0)
 		return (NULL);
 	pthread_mutex_lock(&philo->meal_lock);
-	philo->last_meal = ft_currect_time(philo);
+	philo->last_meal = ft_current_time(philo);
 	pthread_mutex_unlock(&philo->meal_lock);
 	if (philo->table->time_to_die == 0)
 		return (NULL);
 	if (philo->table->philos == 1)
 		return (ft_one_philo(philo));
-	else if ((philo->id - 1) % 2)
+	else if (philo->id % 2)
 		ft_think(philo, 1);
 	while (ft_the_end(philo->table) == 0)
 	{

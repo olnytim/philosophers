@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:27:37 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/11 19:59:37 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:54:45 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_table	*set_table(int ac, char **av, int i);
 /* work with time */
 void	ft_sleep(time_t sleep_time);
 time_t	ft_start_time(void);
-time_t	ft_currect_time(t_philo *philo);
+time_t	ft_current_time(t_philo *philo);
 
 /* thread init */
 void	*ft_philo(void *info);

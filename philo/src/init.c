@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:05:56 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/11 19:59:48 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:58:33 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	ft_print(t_table *table)
 	printf("time_to_sleep: %ld\n", table->time_to_sleep);
 	printf("must_eat: %d\n", table->must_eat);
 	printf("start_time: %ld\n", table->start_time);
-	printf("start_time: %ld\n", table->thread[0].last_meal);
-	printf("start_time: %ld\n", table->thread[1].last_meal);
+	printf("last meal[0]: %ld\n", table->thread[0].last_meal);
+	printf("last meal[1]: %ld\n", table->thread[1].last_meal);
 }
 
 static void	ft_forks_init(t_table *table)
@@ -46,7 +46,7 @@ static void	ft_philo_init(t_table *table)
 		table->thread[i].id = i + 1;
 		printf("philos[%d]_id: %d\n", i, table->thread[i].id);
 		table->thread[i].times_ate = 0;
-		table->thread[i].last_meal = ft_currect_time(&table->thread[i]);
+		table->thread[i].last_meal = ft_start_time();
 		table->thread[i].fork1 = &table->forks[i];
 		printf("fork1[%d]: %p\n", i, table->thread[i].fork1);
 		if (i != table->philos - 1)
@@ -54,6 +54,7 @@ static void	ft_philo_init(t_table *table)
 		else
 			table->thread[i].fork2 = &table->forks[0];
 		printf("fork2[%d]: %p\n", i, table->thread[i].fork2);
+		table->thread[i].table = table;
 		++i;
 	}
 }
@@ -65,6 +66,7 @@ t_table	*set_table(int ac, char **av, int i)
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (0);
+	table->start_time = ft_start_time();
 	table->philos = ft_atoi(av[i++]);
 	table->time_to_die = ft_atoi(av[i++]);
 	table->time_to_eat = ft_atoi(av[i++]);
@@ -75,7 +77,6 @@ t_table	*set_table(int ac, char **av, int i)
 	ft_philo_init(table);
 	if (!table->thread)
 		return (NULL);
-	table->start_time = ft_start_time();
 	ft_print(table);
 	return (table);
 }
