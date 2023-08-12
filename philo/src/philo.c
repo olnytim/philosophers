@@ -69,7 +69,6 @@ void	*ft_philo(void *info)
 	t_philo	*philo;
 
 	philo = (t_philo *)info;
-	// printf(": %u\n", philo->table->must_eat);
 	if (philo->table->must_eat == 0)
 		return (NULL);
 	pthread_mutex_lock(&philo->meal_lock);
