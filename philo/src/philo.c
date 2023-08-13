@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 18:12:26 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/12 18:54:45 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:12:17 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ static void	ft_eat(t_philo *philo)
 	ft_print_status(philo, 0, 3);
 	ft_print_status(philo, 0, 4);
 	pthread_mutex_lock(&philo->meal_lock);
-	philo->last_meal = ft_start_time();
+	philo->last_meal = ft_current_time(philo);
 	pthread_mutex_unlock(&philo->meal_lock);
 	if (ft_the_end(philo->table) == 0)
 	{
 		pthread_mutex_lock(&philo->meal_lock);
 		philo->times_ate += 1;
+		printf("times ate: %u\n", philo->times_ate);
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
@@ -40,7 +41,7 @@ static void	ft_think(t_philo *philo, int mute)
 
 	pthread_mutex_lock(&philo->meal_lock);
 	time_to_think = (philo->table->time_to_die
-			- (ft_start_time() - philo->last_meal)
+			- (philo->table->start_time - philo->last_meal)
 			- philo->table->time_to_eat) / 2;
 	pthread_mutex_unlock(&philo->meal_lock);
 	if (time_to_think < 0)
