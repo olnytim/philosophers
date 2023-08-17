@@ -1,6 +1,6 @@
 # Philosophers Project - 42 School: Unleashing the Philosophical Concurrency! 🌌🔥
 
-## Description
+## Description ❗
 Welcome to the realm of "Philosophers" – a captivating project embedded within the rich tapestry of 42 School's curriculum. Prepare yourself for an extraordinary adventure, delving into the depths of multithreading and synchronization concepts in the mystical realm of C. Your quest? To conquer the enigmatic "Dining Philosophers Problem."
 
 ## The Dining Philosophers Problem
