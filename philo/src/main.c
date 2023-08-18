@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:04:57 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/12 20:12:00 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/18 20:04:42 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ int	main(int ac, char **av)
 	table = set_table(ac, av, 1);
 	if (!table)
 		return (EXIT_FAILURE);
-	// if (!ft_go)
-	// 	return (EXIT_FAILURE);
 	ft_go(table);
-	// printf("ft_go(): %d\n", ft_go(table));
 	ft_end(table);
 	return (EXIT_SUCCESS);
 }

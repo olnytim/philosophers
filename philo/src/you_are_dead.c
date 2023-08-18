@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:08:59 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/12 17:53:00 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/18 20:05:03 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_the_end(t_table *table)
 	return (i);
 }
 
-static void	ft_set_bool_flag(t_table *table, int flag)
+void	ft_set_bool_flag(t_table *table, int flag)
 {
 	pthread_mutex_lock(&table->end_lock);
 	table->bool_flag = flag;
@@ -36,7 +36,7 @@ static int	ft_execution(t_philo *philo)
 	if ((ft_start_time() - philo->last_meal) >= philo->table->time_to_die)
 	{
 		ft_set_bool_flag(philo->table, 1);
-		ft_print_status(philo, 0, 0);
+		ft_print_status(philo, 1, 0);
 		pthread_mutex_unlock(&philo->meal_lock);
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 18:12:26 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/12 20:12:17 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:52:04 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_eat(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->meal_lock);
 		philo->times_ate += 1;
-		printf("times ate: %u\n", philo->times_ate);
+		// printf("times ate: %u\n", philo->times_ate);
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
