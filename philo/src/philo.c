@@ -29,8 +29,8 @@ static void	ft_eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
-	pthread_mutex_unlock(philo->fork1);
 	pthread_mutex_unlock(philo->fork2);
+	pthread_mutex_unlock(philo->fork1);
 	ft_sleep(philo->table, philo->table->time_to_sleep);
 }
 

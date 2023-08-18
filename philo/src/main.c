@@ -58,5 +58,6 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	ft_go(table);
 	ft_end(table);
+	// system("leaks philo");
 	return (EXIT_SUCCESS);
 }
