@@ -42,8 +42,6 @@ static void	ft_end(t_table *table)
 		pthread_join(table->thread[i++].thread, NULL);
 	if (table->philos > 1)
 		pthread_join(table->wasted, NULL);
-	// mutexes_end(table);
-	// free_table(table);
 }
 
 int	main(int ac, char **av)

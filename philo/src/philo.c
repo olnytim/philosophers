@@ -26,7 +26,6 @@ static void	ft_eat(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->meal_lock);
 		philo->times_ate += 1;
-		// printf("times ate: %u\n", philo->times_ate);
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
@@ -75,7 +74,7 @@ void	*ft_philo(void *info)
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->last_meal = philo->table->start_time;
 	pthread_mutex_unlock(&philo->meal_lock);
-	// sim_start_delay(philo->table->start_time);
+	sim_start_delay(philo->table->start_time);
 	if (philo->table->time_to_die == 0)
 		return (NULL);
 	if (philo->table->philos == 1)

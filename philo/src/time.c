@@ -17,7 +17,8 @@ time_t	ft_current_time(t_philo *philo)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000) - philo->table->start_time);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000)
+		- philo->table->start_time);
 }
 
 time_t	ft_start_time(void)
@@ -36,7 +37,7 @@ void	ft_sleep(t_table *table, time_t sleep_time)
 	while (ft_start_time() < awake)
 	{
 		if (ft_the_end(table))
-			break;
+			break ;
 		usleep(10);
 	}
 }

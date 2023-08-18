@@ -65,7 +65,6 @@ static int	ft_finish(t_table *table)
 	if ((int)table->must_eat != -42 && flag == 1)
 	{
 		ft_set_bool_flag(table, 1);
-		printf("hi\n");
 		return (1);
 	}
 	return (0);
