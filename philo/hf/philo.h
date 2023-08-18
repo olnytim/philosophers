@@ -74,9 +74,10 @@ void	mutexes_end(t_table *table);
 t_table	*set_table(int ac, char **av, int i);
 
 /* work with time */
-void	ft_sleep(time_t sleep_time);
+void	ft_sleep(t_table *table, time_t sleep_time);
 time_t	ft_start_time(void);
 time_t	ft_current_time(t_philo *philo);
+void	sim_start_delay(time_t start_time);
 
 /* thread init */
 void	*ft_philo(void *info);

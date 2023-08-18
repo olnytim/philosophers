@@ -65,6 +65,7 @@ static int	ft_finish(t_table *table)
 	if ((int)table->must_eat != -42 && flag == 1)
 	{
 		ft_set_bool_flag(table, 1);
+		printf("hi\n");
 		return (1);
 	}
 	return (0);
@@ -78,6 +79,7 @@ void	*ft_philo_is_dead(void *info)
 	if (table->must_eat == 0)
 		return (NULL);
 	ft_set_bool_flag(table, 0);
+	sim_start_delay(table->start_time);
 	while (1)
 	{
 		if (ft_finish(table) == 1)

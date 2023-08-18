@@ -51,8 +51,8 @@ t_table	*set_table(int ac, char **av, int i)
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (0);
-	table->start_time = ft_start_time();
 	table->philos = ft_atoi(av[i++]);
+	table->start_time = ft_start_time();
 	table->time_to_die = ft_atoi(av[i++]);
 	table->time_to_eat = ft_atoi(av[i++]);
 	table->time_to_sleep = ft_atoi(av[i++]);
