@@ -40,6 +40,7 @@ static void	ft_philo_init(t_table *table)
 		else
 			table->thread[i].fork2 = &table->forks[0];
 		table->thread[i].table = table;
+		pthread_mutex_init(&table->thread[i].meal_lock, 0);
 		++i;
 	}
 }
@@ -60,6 +61,8 @@ t_table	*set_table(int ac, char **av, int i)
 	if (ac - 1 == 5)
 		table->must_eat = ft_atoi(av[i]);
 	ft_philo_init(table);
+	pthread_mutex_init(&table->output_lock, 0);
+	pthread_mutex_init(&table->end_lock, 0);
 	if (!table->thread)
 		return (NULL);
 	return (table);
