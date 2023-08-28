@@ -83,7 +83,7 @@ void	*ft_philo_is_dead(void *info)
 	{
 		if (ft_finish(table) == 1)
 			return (NULL);
-		usleep(100);
+		usleep(1000);
 	}
 	return (NULL);
 }

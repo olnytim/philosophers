@@ -29,8 +29,8 @@ static void	ft_eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->meal_lock);
 	}
 	ft_print_status(philo, 0, 1);
-	pthread_mutex_unlock(philo->fork2);
 	pthread_mutex_unlock(philo->fork1);
+	pthread_mutex_unlock(philo->fork2);
 	ft_sleep(philo->table, philo->table->time_to_sleep);
 }
 
@@ -72,14 +72,14 @@ void	*ft_philo(void *info)
 	if (philo->table->must_eat == 0)
 		return (NULL);
 	pthread_mutex_lock(&philo->meal_lock);
-	philo->last_meal = philo->table->start_time;
+	philo->last_meal = ft_start_time();
 	pthread_mutex_unlock(&philo->meal_lock);
 	// ft_delay(philo->table->start_time);
 	if (philo->table->time_to_die == 0)
 		return (NULL);
 	if (philo->table->philos == 1)
 		return (ft_one_philo(philo));
-	else if ((philo->id - 1) % 2)
+	else if (philo->id % 2)
 		ft_think(philo, 1);
 	while (ft_the_end(philo->table) == 0)
 	{

@@ -42,6 +42,8 @@ static void	ft_end(t_table *table)
 		pthread_join(table->thread[i++].thread, NULL);
 	if (table->philos > 1)
 		pthread_join(table->wasted, NULL);
+	mutexes_end(table);
+	// free_table(table);
 }
 
 int	main(int ac, char **av)
@@ -56,7 +58,8 @@ int	main(int ac, char **av)
 	table = set_table(ac, av, 1);
 	if (!table)
 		return (EXIT_FAILURE);
-	ft_go(table);
+	if(!ft_go(table))
+		return (EXIT_FAILURE);
 	ft_end(table);
 	// system("leaks philo");
 	return (EXIT_SUCCESS);
