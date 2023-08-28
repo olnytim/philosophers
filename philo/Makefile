@@ -12,7 +12,7 @@ DEPS 		=	$(OBJS:.o=.d)
 #
 CC 			=	cc
 FLAGS 		=	-Wall -Werror -Wextra -g
-FSANITIZE 	=	-fsanitize=address 
+FSANITIZE 	=	-fsanitize=thread
 #
 all:	$(NAME)
 			@echo > /dev/null

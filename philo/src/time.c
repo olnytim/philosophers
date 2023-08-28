@@ -38,11 +38,11 @@ void	ft_sleep(t_table *table, time_t sleep_time)
 	{
 		if (ft_the_end(table))
 			break ;
-		usleep(10);
+		usleep(100);
 	}
 }
 
-void	sim_start_delay(time_t start_time)
+void	ft_delay(time_t start_time)
 {
 	while (ft_start_time() < start_time)
 		continue ;

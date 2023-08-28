@@ -74,7 +74,7 @@ void	*ft_philo(void *info)
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->last_meal = philo->table->start_time;
 	pthread_mutex_unlock(&philo->meal_lock);
-	sim_start_delay(philo->table->start_time);
+	// ft_delay(philo->table->start_time);
 	if (philo->table->time_to_die == 0)
 		return (NULL);
 	if (philo->table->philos == 1)

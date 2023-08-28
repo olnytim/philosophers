@@ -78,7 +78,7 @@ void	*ft_philo_is_dead(void *info)
 	if (table->must_eat == 0)
 		return (NULL);
 	ft_set_bool_flag(table, 0);
-	sim_start_delay(table->start_time);
+	// ft_delay(table->start_time);
 	while (1)
 	{
 		if (ft_finish(table) == 1)
