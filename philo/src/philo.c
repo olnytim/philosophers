@@ -73,7 +73,6 @@ void	*ft_philo(void *info)
 	if (philo->table->must_eat == 0)
 		return (NULL);
 	pthread_mutex_lock(&philo->meal_lock);
-	// philo->last_meal = ft_start_time();
 	philo->last_meal = philo->table->start_time;
 	pthread_mutex_unlock(&philo->meal_lock);
 	ft_delay(philo->table->start_time);

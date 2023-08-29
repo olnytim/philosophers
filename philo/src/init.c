@@ -39,24 +39,11 @@ static void	ft_philo_init(t_table *table)
 	{
 		table->thread[i].id = i + 1;
 		table->thread[i].times_ate = 0;
-		// table->thread[i].last_meal = ft_start_time();
-		// third
-		// table->thread[i].fork1 = &table->forks[i];
-		// table->thread[i].fork2 = &table->forks[i + 1 % table->philos];
-		// first
 		table->thread[i].fork1 = &table->forks[i];
 		if (i != table->philos - 1)
 			table->thread[i].fork2 = &table->forks[i + 1];
 		else
 			table->thread[i].fork2 = &table->forks[0];
-		// second
-		// table->thread[i].fork1 = &table->forks[i]; 
-		// table->thread[i].fork2 = &table->forks[i + 1 % table->philos];
-		// if (i % 2)
-		// {
-		// 	table->thread[i].fork1 = &table->forks[i + 1 % table->philos];
-		// 	table->thread[i].fork2 = &table->forks[i];
-		// }
 		table->thread[i].table = table;
 		pthread_mutex_init(&table->thread[i].meal_lock, 0);
 		++i;
