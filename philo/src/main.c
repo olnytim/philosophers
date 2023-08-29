@@ -17,6 +17,8 @@ static int	ft_go(t_table *table)
 	unsigned int	i;
 
 	i = 0;
+	// table->start_time = ft_start_time();
+	table->start_time = ft_start_time() + (table->philos * 20);
 	while (i < table->philos)
 	{
 		if (pthread_create(&table->thread[i].thread, NULL,

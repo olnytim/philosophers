@@ -22,14 +22,14 @@ void	ft_print_status(t_philo *philo, int is_dead, int cases)
 	}
 	if (cases == 0)
 		printf("%ld %d %s\n", ft_current_time(philo), philo->id, "died");
-	else if (cases == 1 && philo->table->bool_flag != 1)
+	else if (cases == 1)
 		printf("%ld %d %s\n", ft_current_time(philo), philo->id, "is sleeping");
-	else if (cases == 2 && philo->table->bool_flag != 1)
+	else if (cases == 2)
 		printf("%ld %d %s\n", ft_current_time(philo), philo->id, "is thinking");
-	else if (cases == 3 && philo->table->bool_flag != 1)
+	else if (cases == 3)
 		printf("%ld %d %s\n", ft_current_time(philo), philo->id,
 			"has taken a fork");
-	else if (cases == 4 && philo->table->bool_flag != 1)
+	else if (cases == 4)
 		printf("%ld %d %s\n", ft_current_time(philo), philo->id, "is eating");
 	pthread_mutex_unlock(&philo->table->output_lock);
 }
