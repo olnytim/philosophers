@@ -19,26 +19,3 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-
-typedef struct s_table
-{
-	time_t			start_time;
-	time_t			time_to_die;
-	time_t			time_to_eat;
-	time_t			time_to_sleep;
-	int				must_eat;
-	unsigned int	philos;
-	t_philo			**thread;
-}				t_table;
-
-typedef struct s_philo
-{
-	pthread_t		thread;
-	unsigned int	id;
-	unsigned int	times_ate;
-	pthread_mutex_t	meal_time_lock;
-	time_t			last_meal;
-}				t_philo;
-
-#endif
