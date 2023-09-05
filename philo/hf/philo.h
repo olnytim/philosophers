@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:27:37 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/08/18 20:04:18 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:55:47 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ use available unsigned integer\n"
 use available amount of philos\n"
 # define ERROR_THREAD "%s error: thread not created\n"
 # define ERROR_MALLOC "%s error: memory not allocated\n"
+# define ERROR_INIT "%s error: wrong params. Use each param > 59\n"
 # define ERROR_MUTEX "%s error: mutex not created\n"
 
 typedef struct s_philo
@@ -84,9 +85,14 @@ void	*ft_philo(void *info);
 
 /* you are dead */
 int		ft_the_end(t_table *table);
+int		ft_execution(t_philo *philo);
+void	ft_set_bool_flag(t_table *table, int flag);
 void	*ft_philo_is_dead(void *info);
 
 /* print status */
 void	ft_print_status(t_philo *philo, int is_dead, int cases);
+
+/* to norm code */
+int		ft_check(t_table *table, unsigned int *i, int *flag);
 
 #endif

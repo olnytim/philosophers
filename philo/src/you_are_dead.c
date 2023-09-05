@@ -6,7 +6,7 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 16:08:59 by olnytim           #+#    #+#             */
-/*   Updated: 2023/08/18 20:05:03 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:31:29 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_set_bool_flag(t_table *table, int flag)
 	pthread_mutex_unlock(&table->end_lock);
 }
 
-static int	ft_execution(t_philo *philo)
+int	ft_execution(t_philo *philo)
 {
 	if ((ft_start_time() - philo->last_meal) >= philo->table->time_to_die)
 	{
@@ -45,23 +45,13 @@ static int	ft_execution(t_philo *philo)
 
 static int	ft_finish(t_table *table)
 {
-	unsigned int	i;
 	int				flag;
+	unsigned int	i;
 
 	i = 0;
 	flag = 1;
-	while (i < table->philos)
-	{
-		pthread_mutex_lock(&table->thread[i].meal_lock);
-		if (ft_execution(&table->thread[i]))
-			return (1);
-		if ((int)table->must_eat != -42)
-		{
-			if (table->thread[i].times_ate < table->must_eat)
-				flag = 0;
-		}
-		pthread_mutex_unlock(&table->thread[i++].meal_lock);
-	}
+	if (ft_check(table, &i, &flag))
+		return (1);
 	if ((int)table->must_eat != -42 && flag == 1)
 	{
 		ft_set_bool_flag(table, 1);
@@ -85,5 +75,4 @@ void	*ft_philo_is_dead(void *info)
 			return (NULL);
 		usleep(1000);
 	}
-	return (NULL);
 }

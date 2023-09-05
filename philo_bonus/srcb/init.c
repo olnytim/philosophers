@@ -6,48 +6,44 @@
 /*   By: tgalyaut <tgalyaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 16:05:56 by tgalyaut          #+#    #+#             */
-/*   Updated: 2023/09/05 18:06:35 by tgalyaut         ###   ########.fr       */
+/*   Updated: 2023/09/05 20:30:41 by tgalyaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hf/philo.h"
-
-static void	ft_forks_init(t_table *table)
-{
-	unsigned int	i;
-
-	table->forks = malloc(sizeof(pthread_mutex_t) * table->philos);
-	if (!table->forks)
-		return ;
-	i = 0;
-	while (i < table->philos)
-	{
-		if (pthread_mutex_init(&table->forks[i], 0))
-			return ;
-		++i;
-	}
-}
+#include "../hf/philo_bonus.h"
 
 static void	ft_philo_init(t_table *table)
 {
 	unsigned int	i;
 
 	table->thread = malloc(sizeof(t_philo) * table->philos);
-	ft_forks_init(table);
 	i = 0;
 	while (i < table->philos)
 	{
 		table->thread[i].id = i + 1;
+		table->thread[i].last_meal = ft_start_time();
 		table->thread[i].times_ate = 0;
-		table->thread[i].fork1 = &table->forks[i];
-		if (i != table->philos - 1)
-			table->thread[i].fork2 = &table->forks[i + 1];
-		else
-			table->thread[i].fork2 = &table->forks[0];
 		table->thread[i].table = table;
-		pthread_mutex_init(&table->thread[i].meal_lock, 0);
+		table->thread[i].pid = 0;
 		++i;
 	}
+}
+
+static void	*ft_destinit_sem(t_table *table)
+{
+	sem_unlink("forks_sem");
+	sem_unlink("output_sem");
+	sem_unlink("end_lock_sem");
+	sem_unlink("meal_lock_sem");
+	table->forks_sem = sem_open("forks_sem", O_CREAT, 0666, table->philos);
+	table->output_sem = sem_open("output_sem", O_CREAT, 0666, 1);
+	table->end_lock_sem = sem_open("end_lock_sem", O_CREAT, 0666, 1);
+	table->meal_lock_sem = sem_open("meal_lock_sem", O_CREAT, 0666, 1);
+	if (table->forks_sem == SEM_FAILED
+		|| table->output_sem == SEM_FAILED
+		|| table->end_lock_sem == SEM_FAILED
+		|| table->meal_lock_sem == SEM_FAILED)
+		return (NULL);
 }
 
 t_table	*set_table(int ac, char **av, int i)
@@ -67,11 +63,11 @@ t_table	*set_table(int ac, char **av, int i)
 	table->must_eat = -42;
 	if (ac - 1 == 5)
 		table->must_eat = ft_atoi(av[i]);
-	ft_philo_init(table);
-	table->start_time = ft_start_time() + (table->philos * 20);
-	pthread_mutex_init(&table->output_lock, 0);
-	pthread_mutex_init(&table->end_lock, 0);
 	table->bool_flag = 0;
+	table->start_time = ft_start_time();
+	if (!ft_destinit_sem(table))
+		return (NULL);
+	ft_philo_init(table);
 	if (!table->thread)
 		return (NULL);
 	return (table);
