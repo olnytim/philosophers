@@ -61,11 +61,3 @@ int	error_init(t_table *table, char *str, char *reas)
 		free_table(table);
 	return (ft_out(str, reas, 0));
 }
-
-void	*error_init2(t_table *table, char *str, char *reas)
-{
-	if (table != NULL)
-		free_table(table);
-	ft_out(str, reas, EXIT_FAILURE);
-	return (NULL);
-}
