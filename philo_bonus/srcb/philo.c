@@ -24,7 +24,7 @@ static void	ft_eat(t_philo *philo)
 	sem_post(philo->table->output_sem);
 	ft_sleep(philo->table->time_to_eat);
 	sem_wait(philo->table->meal_lock_sem);
-	philo->last_meal = ft_start_time();
+	philo->last_meal = ft_current_time(philo);
 	sem_post(philo->table->meal_lock_sem);
 	sem_post(philo->table->forks_sem);
 	sem_post(philo->table->forks_sem);

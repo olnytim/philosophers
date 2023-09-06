@@ -22,7 +22,7 @@ static void	ft_go(t_table *table)
 		table->thread[i].pid = fork();
 		if (table->thread[i].pid < 0)
 		{
-			printf("error with forks\n");
+			printf("error with fork\n");
 			exit (1);
 		}
 		if (table->thread[i].pid == 0)

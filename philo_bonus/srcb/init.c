@@ -21,8 +21,6 @@ static void	ft_philo_init(t_table *table)
 	while (i < table->philos)
 	{
 		table->thread[i].id = i + 1;
-		table->thread[i].last_meal = ft_current_time(&table->thread[i]);
-		table->thread[i].last_meal = ft_start_time();
 		table->thread[i].times_ate = 0;
 		table->thread[i].table = table;
 		table->thread[i].pid = 0;
@@ -40,10 +38,12 @@ static void	ft_destinit_sem(t_table *table)
 	table->output_sem = sem_open("output_sem", O_CREAT, 0666, 1);
 	table->end_lock_sem = sem_open("end_lock_sem", O_CREAT, 0666, 1);
 	table->meal_lock_sem = sem_open("meal_lock_sem", O_CREAT, 0666, 1);
+	table->eat_counter_sem = sem_open("eat_counter_sem", O_CREAT, 0666, 1);
 	if (table->forks_sem == SEM_FAILED
 		|| table->output_sem == SEM_FAILED
 		|| table->end_lock_sem == SEM_FAILED
-		|| table->meal_lock_sem == SEM_FAILED)
+		|| table->meal_lock_sem == SEM_FAILED
+		|| table->eat_counter_sem == SEM_FAILED)
 	{
 		printf("error with forks\n");
 		exit (1);
