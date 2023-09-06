@@ -21,6 +21,7 @@ static void	ft_philo_init(t_table *table)
 	while (i < table->philos)
 	{
 		table->thread[i].id = i + 1;
+		table->thread[i].last_meal = ft_current_time(&table->thread[i]);
 		table->thread[i].last_meal = ft_start_time();
 		table->thread[i].times_ate = 0;
 		table->thread[i].table = table;
