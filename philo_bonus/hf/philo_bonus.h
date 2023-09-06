@@ -93,9 +93,6 @@ void	ft_philo(t_philo *philo);
 void	ft_execution(t_table *table);
 void	*ft_philo_is_dead(void *info);
 
-/* print status */
-void	ft_print_status(t_philo *philo, int is_dead, int cases);
-
 /* to norm code */
 int		ft_check(t_table *table, unsigned int *i, int *flag);
 

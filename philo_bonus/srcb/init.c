@@ -43,10 +43,10 @@ static void	ft_destinit_sem(t_table *table)
 		|| table->output_sem == SEM_FAILED
 		|| table->end_lock_sem == SEM_FAILED
 		|| table->meal_lock_sem == SEM_FAILED)
-		{
-			printf("error with forks\n");
-			exit (1);
-		}
+	{
+		printf("error with forks\n");
+		exit (1);
+	}
 }
 
 t_table	*set_table(int ac, char **av, int i)
