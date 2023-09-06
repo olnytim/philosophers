@@ -60,7 +60,7 @@ void	ft_philo(t_philo *philo)
 	if (philo->table->philos == 1)
 		ft_one_philo(philo);
 	if (philo->id % 2 != 0)
-		usleep(2500);
+		usleep(philo->table->time_to_sleep);
 	while (1)
 	{
 		ft_eat(philo);
