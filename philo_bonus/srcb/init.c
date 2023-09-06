@@ -29,7 +29,7 @@ static void	ft_philo_init(t_table *table)
 	}
 }
 
-static void	*ft_destinit_sem(t_table *table)
+static void	ft_destinit_sem(t_table *table)
 {
 	sem_unlink("forks_sem");
 	sem_unlink("output_sem");
@@ -43,7 +43,10 @@ static void	*ft_destinit_sem(t_table *table)
 		|| table->output_sem == SEM_FAILED
 		|| table->end_lock_sem == SEM_FAILED
 		|| table->meal_lock_sem == SEM_FAILED)
-		return (NULL);
+		{
+			printf("error with forks\n");
+			exit (1);
+		}
 }
 
 t_table	*set_table(int ac, char **av, int i)
@@ -65,8 +68,7 @@ t_table	*set_table(int ac, char **av, int i)
 		table->must_eat = ft_atoi(av[i]);
 	table->bool_flag = 0;
 	table->start_time = ft_start_time();
-	if (!ft_destinit_sem(table))
-		return (NULL);
+	ft_destinit_sem(table);
 	ft_philo_init(table);
 	if (!table->thread)
 		return (NULL);

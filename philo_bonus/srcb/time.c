@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hf/philo.h"
+#include "../hf/philo_bonus.h"
 
 time_t	ft_current_time(t_philo *philo)
 {
@@ -25,7 +25,7 @@ time_t	ft_start_time(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	ft_sleep(t_table *table, time_t sleep_time)
+void	ft_sleep(time_t sleep_time)
 {
 	time_t	awake;
 

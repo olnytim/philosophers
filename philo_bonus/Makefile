@@ -6,7 +6,7 @@ PREF_OBJB 	=	objb
 HF_DIR 		=	hf
 HEADER 		=	-I$(HF_DIR)
 #
-SRCSB 		=	$(addprefix $(PREF_SB)/, main.c parse.c init.c the_end.c time.c output.c philo.c you_are_dead.c)
+SRCSB 		=	$(addprefix $(PREF_SB)/, main.c parse.c init.c the_end.c time.c philo.c you_are_dead.c)
 OBJSB 		=	$(patsubst $(PREF_SB)/%.c, $(PREF_OBJB)/%.o, $(SRCSB))
 #
 CC 			=	cc

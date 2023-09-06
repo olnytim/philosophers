@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <signal.h>
 # include <semaphore.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 
 # define PROG_NAME "philo:"
 # define ERROR_USAGE "%s usage: ./philo <number_of_philosophers> \
@@ -74,24 +76,21 @@ int		ft_atoi(char *str);
 
 /* errors functions */
 int		ft_out(char	*str, char *reas, int ret);
-int		error_init(t_table *table, char *str, char *reas);
-void	*error_init2(t_table *table, char *str, char *reas);
-void	*free_table(t_table *table);
-void	mutexes_end(t_table *table);
+int		error_init(char *str, char *reas);
 
 t_table	*set_table(int ac, char **av, int i);
 
 /* work with time */
 void	ft_delay(time_t start_time);
-void	ft_sleep(t_table *table, time_t sleep_time);
+void	ft_sleep(time_t sleep_time);
 time_t	ft_start_time(void);
 time_t	ft_current_time(t_philo *philo);
 
 /* thread init */
-void	*ft_philo(void *info);
+void	ft_philo(t_philo *philo);
 
 /* you are dead */
-int		ft_execution(t_table *table);
+void	ft_execution(t_table *table);
 void	*ft_philo_is_dead(void *info);
 
 /* print status */

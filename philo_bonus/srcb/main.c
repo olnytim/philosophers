@@ -12,13 +12,11 @@
 
 #include "../hf/philo_bonus.h"
 
-static int	ft_go(t_table *table)
+static void	ft_go(t_table *table)
 {
 	unsigned int	i;
-	int				pid;
 
 	i = 0;
-	pid = 0;
 	while (i < table->philos)
 	{
 		table->thread[i].pid = fork();

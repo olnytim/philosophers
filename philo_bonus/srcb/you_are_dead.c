@@ -12,9 +12,9 @@
 
 #include "../hf/philo_bonus.h"
 
-int	ft_execution(t_table *table)
+void	ft_execution(t_table *table)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < table->philos)

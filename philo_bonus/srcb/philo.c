@@ -22,7 +22,7 @@ static void	ft_eat(t_philo *philo)
 	printf("%ld %d %s\n", ft_current_time(philo),
 		philo->id, "is eating");
 	sem_post(philo->table->output_sem);
-	ft_sleep(philo->table, philo->table->time_to_eat);
+	ft_sleep(philo->table->time_to_eat);
 	sem_wait(philo->table->meal_lock_sem);
 	philo->last_meal = ft_start_time();
 	sem_post(philo->table->meal_lock_sem);
@@ -39,7 +39,7 @@ static void	ft_think(t_philo *philo)
 	printf("%ld %d %s\n", ft_current_time(philo),
 		philo->id, "is sleeping");
 	sem_post(philo->table->output_sem);
-	ft_sleep(philo->table, philo->table->time_to_sleep);
+	ft_sleep(philo->table->time_to_sleep);
 	sem_wait(philo->table->output_sem);
 	printf("%ld %d %s\n", ft_current_time(philo),
 		philo->id, "is thinking");
