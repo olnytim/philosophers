@@ -14,45 +14,36 @@
 
 static void	ft_eat(t_philo *philo)
 {
-	pthread_mutex_lock(philo->fork1);
-	ft_print_status(philo, 0, 3);
-	pthread_mutex_lock(philo->fork2);
-	ft_print_status(philo, 0, 3);
-	ft_print_status(philo, 0, 4);
-	pthread_mutex_lock(&philo->meal_lock);
-	philo->last_meal = ft_start_time();
-	pthread_mutex_unlock(&philo->meal_lock);
+	sem_wait(philo->table->forks_sem);
+	sem_wait(philo->table->forks_sem);
+	sem_wait(philo->table->output_sem);
+	printf("%ld %d %s\n", ft_current_time(philo),
+		philo->id, "has taken a fork");
+	printf("%ld %d %s\n", ft_current_time(philo),
+		philo->id, "is eating");
+	sem_post(philo->table->output_sem);
 	ft_sleep(philo->table, philo->table->time_to_eat);
-	if (!ft_the_end(philo->table))
-	{
-		pthread_mutex_lock(&philo->meal_lock);
-		philo->times_ate += 1;
-		pthread_mutex_unlock(&philo->meal_lock);
-	}
-	ft_print_status(philo, 0, 1);
-	pthread_mutex_unlock(philo->fork1);
-	pthread_mutex_unlock(philo->fork2);
-	ft_sleep(philo->table, philo->table->time_to_sleep);
+	sem_wait(philo->table->meal_lock_sem);
+	philo->last_meal = ft_start_time();
+	sem_post(philo->table->meal_lock_sem);
+	sem_post(philo->table->forks_sem);
+	sem_post(philo->table->forks_sem);
+	sem_wait(philo->table->eat_counter_sem);
+	philo->times_ate += 1;
+	sem_post(philo->table->eat_counter_sem);
 }
 
-static void	ft_think(t_philo *philo, int mute)
+static void	ft_think(t_philo *philo)
 {
-	time_t	time_to_think;
-
-	pthread_mutex_lock(&philo->meal_lock);
-	time_to_think = (philo->table->time_to_die
-			- (ft_start_time() - philo->last_meal)
-			- philo->table->time_to_eat) / 2;
-	pthread_mutex_unlock(&philo->meal_lock);
-	if (time_to_think < 0)
-		time_to_think = 0;
-	if (time_to_think == 0 && mute == 1)
-		time_to_think = 1;
-	if (time_to_think > 600)
-		time_to_think = 200;
-	if (mute == 0)
-		ft_print_status(philo, 0, 2);
-	ft_sleep(philo->table, time_to_think);
+	sem_wait(philo->table->output_sem);
+	printf("%ld %d %s\n", ft_current_time(philo),
+		philo->id, "is sleeping");
+	sem_post(philo->table->output_sem);
+	ft_sleep(philo->table, philo->table->time_to_sleep);
+	sem_wait(philo->table->output_sem);
+	printf("%ld %d %s\n", ft_current_time(philo),
+		philo->id, "is thinking");
+	sem_post(philo->table->output_sem);
 }
 
 static void	ft_one_philo(t_philo *philo)
@@ -65,5 +56,14 @@ void	ft_philo(t_philo *philo)
 {
 	sem_wait(philo->table->meal_lock_sem);
 	philo->last_meal = ft_current_time(philo);
-	
+	sem_post(philo->table->meal_lock_sem);
+	if (philo->table->philos == 1)
+		ft_one_philo(philo);
+	if (philo->id % 2 != 0)
+		usleep(2500);
+	while (1)
+	{
+		ft_eat(philo);
+		ft_think(philo);
+	}
 }

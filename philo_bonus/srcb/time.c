@@ -31,11 +31,7 @@ void	ft_sleep(t_table *table, time_t sleep_time)
 
 	awake = ft_start_time() + sleep_time;
 	while (ft_start_time() < awake)
-	{
-		if (ft_the_end(table))
-			break ;
 		usleep(10);
-	}
 }
 
 void	ft_delay(time_t start_time)
