@@ -49,7 +49,7 @@ void	*ft_philo_is_dead(void *info)
 		if (philo->table->time_to_die < (ft_start_time() - philo->last_meal))
 		{
 			sem_wait(philo->table->output_sem);
-			printf("TIME TO DIE\n");
+			printf("%d TIME TO DIE\n", philo->id);
 			sem_post(philo->table->meal_lock_sem);
 			exit(1);
 		}
