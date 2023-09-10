@@ -61,7 +61,6 @@ typedef struct s_table
 	sem_t			*eat_counter_sem;
 	sem_t			*forks_sem;
 	sem_t			*output_sem;
-	sem_t			*end_lock_sem;
 	sem_t			*meal_lock_sem;
 	struct s_philo	*thread;
 	int				bool_flag;

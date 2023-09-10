@@ -15,6 +15,8 @@
 static void	ft_eat(t_philo *philo)
 {
 	sem_wait(philo->table->forks_sem);
+	printf("%ld %d %s\n", ft_current_time(philo),
+		philo->id, "has taken a fork");
 	sem_wait(philo->table->forks_sem);
 	sem_wait(philo->table->output_sem);
 	printf("%ld %d %s\n", ft_current_time(philo),
