@@ -56,5 +56,4 @@ void	*ft_philo_is_dead(void *info)
 		else
 			sem_post(philo->table->meal_lock_sem);
 	}
-	return (NULL);
 }

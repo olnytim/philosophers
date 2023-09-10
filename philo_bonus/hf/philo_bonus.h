@@ -44,9 +44,6 @@ typedef struct s_philo
 	unsigned int	times_ate;
 	time_t			last_meal;
 	pthread_t		checker;
-	pthread_mutex_t	meal_lock;
-	pthread_mutex_t	*fork1;
-	pthread_mutex_t	*fork2;
 	struct s_table	*table;
 }	t_philo;
 

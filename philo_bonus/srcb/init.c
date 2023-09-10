@@ -34,6 +34,7 @@ static void	ft_destinit_sem(t_table *table)
 	sem_unlink("output_sem");
 	sem_unlink("end_lock_sem");
 	sem_unlink("meal_lock_sem");
+	sem_unlink("eat_counter_sem");
 	table->forks_sem = sem_open("forks_sem", O_CREAT, 0666, table->philos);
 	table->output_sem = sem_open("output_sem", O_CREAT, 0666, 1);
 	table->end_lock_sem = sem_open("end_lock_sem", O_CREAT, 0666, 1);
