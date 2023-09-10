@@ -46,7 +46,7 @@ static void	ft_destinit_sem(t_table *table)
 		|| table->meal_lock_sem == SEM_FAILED
 		|| table->eat_counter_sem == SEM_FAILED)
 	{
-		printf("error with forks\n");
+		printf("error with sems\n");
 		exit (1);
 	}
 }
