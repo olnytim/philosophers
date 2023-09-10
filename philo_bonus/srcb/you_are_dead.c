@@ -50,11 +50,11 @@ void	*ft_philo_is_dead(void *info)
 	{
 		ft_eat_checker(philo);
 		sem_wait(philo->table->meal_lock_sem);
-		if (philo->table->time_to_die < (ft_current_time(philo)
+		if (philo->table->time_to_die < (ft_current_time(philo->table)
 				- philo->last_meal))
 		{
 			sem_wait(philo->table->output_sem);
-			printf("%ld %d died\n", ft_current_time(philo), philo->id);
+			printf("%ld %d died\n", ft_current_time(philo->table), philo->id);
 			sem_post(philo->table->meal_lock_sem);
 			exit(1);
 		}

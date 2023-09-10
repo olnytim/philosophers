@@ -18,12 +18,12 @@ all:	$(NAME)
 			@echo > /dev/null
 #
 $(NAME):	$(OBJS)
-			@$(CC) $(FLAGS) $(OBJS) -o $@
+			@$(CC) $(FSANITIZE) $(FLAGS) $(OBJS) -o $@
 			@echo "Executable file "$(NAME)" created successfully!"
 #
 $(PREF_OBJ)/%.o:	$(PREF_SRC)/%.c Makefile
 			@mkdir -p $(PREF_OBJ)
-			@$(CC) $(FLAGS) $(HEADER) -MMD -c $< -o $@
+			@$(CC) $(FSANITIZE) $(FLAGS) $(HEADER) -MMD -c $< -o $@
 #
 -include $(DEPS)
 #

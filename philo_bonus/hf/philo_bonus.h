@@ -80,7 +80,7 @@ t_table	*set_table(int ac, char **av, int i);
 void	ft_delay(time_t start_time);
 void	ft_sleep(time_t sleep_time);
 time_t	ft_start_time(void);
-time_t	ft_current_time(t_philo *philo);
+time_t	ft_current_time(t_table *table);
 
 /* thread init */
 void	ft_philo(t_philo *philo);

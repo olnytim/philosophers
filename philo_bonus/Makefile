@@ -11,7 +11,6 @@ OBJSB 		=	$(patsubst $(PREF_SB)/%.c, $(PREF_OBJB)/%.o, $(SRCSB))
 #
 CC 			=	cc
 FLAGS 		=	-Wall -Werror -Wextra -g
-FSANITIZE 	=	-fsanitize=address 
 #
 all:	$(NAME)
 			@echo > /dev/null

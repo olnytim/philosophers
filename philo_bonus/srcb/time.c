@@ -12,9 +12,9 @@
 
 #include "../hf/philo_bonus.h"
 
-time_t	ft_current_time(t_philo *philo)
+time_t	ft_current_time(t_table *table)
 {
-	return (ft_start_time() - philo->table->start_time);
+	return (ft_start_time() - table->start_time);
 }
 
 time_t	ft_start_time(void)

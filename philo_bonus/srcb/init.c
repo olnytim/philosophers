@@ -23,6 +23,7 @@ static void	ft_philo_init(t_table *table)
 		table->thread[i].id = i + 1;
 		table->thread[i].times_ate = 0;
 		table->thread[i].table = table;
+		table->thread[i].last_meal = ft_current_time(table);
 		table->thread[i].pid = 0;
 		++i;
 	}
