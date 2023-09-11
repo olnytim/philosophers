@@ -30,7 +30,7 @@
 [number_of_times_each_philos_must_eat]\n"
 # define ERROR_INPUT "%s invalid input: %s: \
 use available unsigned integer\n"
-# define ERROR_PINPUT "%s ivalid input: \
+# define ERROR_PINPUT "%s invalid input: \
 use available amount of philos\n"
 # define ERROR_THREAD "%s error: thread not created\n"
 # define ERROR_INIT "%s error: wrong params. Use each param > 59\n"
@@ -54,7 +54,6 @@ typedef struct s_table
 	time_t			time_to_die;
 	time_t			time_to_eat;
 	time_t			time_to_sleep;
-	time_t			last_meal;
 	time_t			start_time;
 	pthread_t		eat_check;
 	pthread_t		die_check;

@@ -61,7 +61,7 @@ void	ft_philo(t_philo *philo)
 	sem_post(philo->table->meal_lock_sem);
 	if (philo->table->philos == 1)
 		ft_one_philo(philo);
-	if (philo->id % 2 != 0)
+	if (philo->id % 2)
 		usleep(philo->table->time_to_sleep);
 	while (1)
 	{

@@ -26,7 +26,7 @@
 [number_of_times_each_philos_must_eat]\n"
 # define ERROR_INPUT "%s invalid input: %s: \
 use available unsigned integer\n"
-# define ERROR_PINPUT "%s ivalid input: \
+# define ERROR_PINPUT "%s invalid input: \
 use available amount of philos\n"
 # define ERROR_THREAD "%s error: thread not created\n"
 # define ERROR_MALLOC "%s error: memory not allocated\n"

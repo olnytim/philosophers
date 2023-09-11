@@ -8,6 +8,7 @@ HEADER 		=	-I$(HF_DIR)
 #
 SRCSB 		=	$(addprefix $(PREF_SB)/, main.c parse.c init.c the_end.c time.c philo.c you_are_dead.c)
 OBJSB 		=	$(patsubst $(PREF_SB)/%.c, $(PREF_OBJB)/%.o, $(SRCSB))
+DEPS 		=	$(OBJSB:.o=.d)
 #
 CC 			=	cc
 FLAGS 		=	-Wall -Werror -Wextra -g
